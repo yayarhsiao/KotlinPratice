@@ -1,8 +1,10 @@
 package com.example.kotlinproject.entity
 
+import com.example.kotlinproject.scence.base.BaseViewModel
+import com.google.gson.annotations.SerializedName
 import java.util.UUID
 
-class CityResponse (
+data class CityResponse (
     val id: UUID,
     val name:String,
     val city:String,

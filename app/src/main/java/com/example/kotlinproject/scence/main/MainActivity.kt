@@ -1,16 +1,18 @@
 package com.example.kotlinproject.scence.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlinproject.OnRecycleViewClickListener
 import com.example.kotlinproject.databinding.ActivityMainBinding
+import com.example.kotlinproject.entity.CityResponse
 import com.example.kotlinproject.scence.base.BaseActivity
-import com.example.kotlinproject.scence.adapter.info.InfoAdapter
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
-    private val mainViewModel: MainViewModel = MainViewModel()
-    private lateinit var mainBinding: ActivityMainBinding
     override fun getViewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
     override fun getViewModelClass(): MainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -22,23 +24,28 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     private fun SetOnClick() {
-        mainBinding.btnCity.setOnClickListener {
-            mainViewModel.getCityCoffeeShop(mainBinding.txtCity.text.toString())
+        binding.btnCity.setOnClickListener {
+            viewModel.getCityCoffeeShop(binding.txtCity.text.toString())
         }
 
-        mainBinding.btnAll.setOnClickListener {
-            mainViewModel.getAllCoffeeShop()
+        binding.btnAll.setOnClickListener {
+            viewModel.getAllCoffeeShop()
         }
     }
 
     private fun SetObserver() {
-        mainViewModel.resultToast.observe(this, Observer { toast ->
+        viewModel.resultToast.observe(this, Observer { toast ->
             toastMsg(toast)
         })
 
-        mainViewModel.resultCityInfo.observe(this, Observer { info ->
-            val infoAdapter = InfoAdapter(info)
-            mainBinding.viewInfo.adapter = infoAdapter
+        viewModel.resultCityInfo.observe(this, Observer { info ->
+            initRecycleView(info)
         })
+    }
+
+    private fun initRecycleView(data: List<CityResponse>) {
+        var mainListAdapter = MainListAdapter(this, data)
+        binding.viewInfo.layoutManager = LinearLayoutManager(this)
+        binding.viewInfo.adapter = mainListAdapter
     }
 }
