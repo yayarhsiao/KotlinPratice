@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toLeftOf="@id/txt_city"
+        android:text="Name"
+        android:textAlignment="textStart"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/txt_city"
+        android:text="City"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/txt_name"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
+    />
+
+    <TextView
+        android:id="@+id/txt_address"
+        android:text="Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_name"
+        android:layout_alignLeft="@id/txt_name"
+        android:layout_marginTop="10dp"
+    />
+
+    <TextView
+        android:id="@+id/txt_open_time"
+        android:text="Open Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_address"
+        android:layout_alignLeft="@id/txt_address"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/txt_url"
+        android:text="URL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_open_time"
+        android:layout_alignLeft="@id/txt_open_time"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+    />
+
+
+
+</RelativeLayout>
